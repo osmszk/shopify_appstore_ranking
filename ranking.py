@@ -27,9 +27,17 @@ print("*****")
 print(soup.find("div", {"id": "SearchResultsListings"}).find_all("div", {"class": "grid__item"})[0].text )
 print("---------")
 for i, content in enumerate(soup.find("div", {"id": "SearchResultsListings"}).find_all("div", {"class": "grid__item"})):
-  # print(content)
+  
   app_title = content.find("h4", {"class": "ui-app-card__name"}).text
-  print("apptitle:",app_title)
+  discription = content.find("p", {"class": "ui-app-card__details"}).text
+  review_rate = content.find("div", {"class": "ui-star-rating__text"}).text
+  developer = content.find("div", {"class": "ui-app-card__developer-name"}).text[3:]
+  print("apptitle:", app_title)
+  print("discription:", discription)
+  print("review_rate:", review_rate)
+  print("developer:", developer)
+  print("-----------")
+  
   # /html/body/div[5]/main/section[2]/div/div[2]/div[2]/div[1]
   # //*[@id="SearchResultsListings"]/div[1]
 
