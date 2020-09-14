@@ -13,5 +13,6 @@ $ source my_env/bin/activate
 ### pip install
 ```
 pip install beautifulsoup4 jupyter urllib3 selenium
+pip install webdriver-manager
 ```
 
