@@ -6,9 +6,11 @@
 
 ## 初期インストール
 ### virtualenvで環境つくる
+```
 $ virtualenv my_env
 $ source my_env/bin/activate
 (my_env) $ pip install ...
+```
 
 ### pip install
 ```
