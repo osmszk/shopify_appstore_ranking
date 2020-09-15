@@ -26,13 +26,15 @@ def get_all_apps(page, result, driver):
     review_rate = review_text[:3] if review_text.find("No") == -1 else 0
     review_count = review_text.split('(')[1].split('reviews')[0] if review_text.find("No") == -1 else 0  #replace('reviews)', '')
     developer = content.find("div", {"class": "ui-app-card__developer-name"}).text[3:].replace(',', " ")
+    app_url = content.find("div", {"class": "ui-app-card"})["data-target-href"].split('?')[0]
     print("apptitle:", app_title)
     print("discription:", discription)
     print("review:", review_rate, review_count)
     print("developer:", developer)
+    print("app_url:", app_url)
     num_per_page = 24
     number = (i + 1) + (page - 1) * num_per_page 
-    result = result + "{0},{1},{2},{3},{4},{5}".format(number,app_title,discription,developer,review_rate,review_count)
+    result = result + "{0},{1},{2},{3},{4},{5},{6}".format(number,app_title,discription,developer,review_rate,review_count,app_url)
     result = result + '\n'
     print("-----------")
 
