@@ -31,7 +31,8 @@ def get_all_apps(page, result):
     print("discription:", discription)
     print("review:", review_rate, review_count)
     print("developer:", developer)
-    number = i + 1
+    num_per_page = 24
+    number = (i + 1) + (page - 1) * num_per_page 
     result = result + "{0},{1},{2},{3},{4},{5}".format(number,app_title,discription,developer,review_rate,review_count)
     result = result + '\n'
     print("-----------")
