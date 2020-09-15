@@ -17,4 +17,8 @@ $ source my_env/bin/activate
 pip install beautifulsoup4 jupyter urllib3 selenium
 pip install webdriver-manager
 ```
+or
+```
+pip install -r requirements.txt
+```
 
