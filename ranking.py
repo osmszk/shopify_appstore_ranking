@@ -6,14 +6,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 # from selenium.webdriver.chrome.options import Options
 # https://apps.shopify.com/browse/all?app_integration_kit=off&app_integration_pos=off&page=2&pricing=all&requirements=off&sort_by=installed
 
-def get_all_apps(page, result):
+def get_all_apps(page, result, driver):
   URL = "https://apps.shopify.com/browse/all?app_integration_kit=off&app_integration_pos=off&page={0}&pricing=all&requirements=off&sort_by=installed".format(page)
   # options = Options()
   # options.set_headless(True)
   # driver = webdriver.Chrome(chrome_options=options)
   print("requesting...")
   print(URL)
-  driver = webdriver.Chrome(ChromeDriverManager().install())
   driver.get(URL)
   html = driver.page_source.encode('utf-8')
 
@@ -37,14 +36,16 @@ def get_all_apps(page, result):
     result = result + '\n'
     print("-----------")
 
-  driver.close()
-  driver.quit()
   return result
 
 
 result = ''
+driver = webdriver.Chrome(ChromeDriverManager().install())
 for i in range(3):
-  result = get_all_apps(i+1, result)
+  result = get_all_apps(i+1, result, driver)
+
+driver.close()
+driver.quit()
 
 with open("output.csv", "w") as text_file:
     print(result, file=text_file)
